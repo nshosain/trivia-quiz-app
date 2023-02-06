@@ -11,11 +11,19 @@ function App() {
           This is where we're going to have the question.
         </h2>
       </div>
-      <div>
-        <div>Answer 1</div>
-        <div>Answer 2</div>
-        <div>Answer 3</div>
-        <div>Answer 4</div>
+      <div className="flex flex-wrap mt-4 justify-around">
+        <button className="bg-white w-2/5 p-4 text-purple-800 font-semibold rounded shadow mb-2">
+          Answer 1
+        </button>
+        <button className="bg-white w-2/5 p-4 text-purple-800 font-semibold rounded shadow mb-2">
+          Answer 2
+        </button>
+        <button className="bg-white w-2/5 p-4 text-purple-800 font-semibold rounded shadow">
+          Answer 3
+        </button>
+        <button className="bg-white w-2/5 p-4 text-purple-800 font-semibold rounded shadow">
+          Answer 4
+        </button>
       </div>
     </div>
   );
