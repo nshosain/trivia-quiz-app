@@ -10,6 +10,7 @@ function App() {
   const [questions, setQuestions] = useState([]);
   const [currentIndex, setCurrentIndex] = useState(0);
   const [score, setScore] = useState(0);
+  const [showAnswers, setShowAnswers] = useState(false);
 
   useEffect(() => {
     fetch(API_URL)
@@ -20,12 +21,17 @@ function App() {
   }, []);
 
   const handleAnswer = (answer) => {
-    const newIndex = currentIndex + 1;
-    setCurrentIndex(newIndex);
-
-    if (answer === questions[currentIndex].correct_answer) {
-      setScore(score + 1);
+    if (!showAnswers) {
+      // prevent double answers
+      if (answer === questions[currentIndex].correct_answer) {
+        setScore(score + 1);
+      }
     }
+
+    setShowAnswers(true);
+
+    //const newIndex = currentIndex + 1;
+    // setCurrentIndex(newIndex);
   };
 
   return questions.length > 0 ? (
@@ -40,6 +46,7 @@ function App() {
         <Questionnaire
           data={questions[currentIndex]}
           handleAnswer={handleAnswer}
+          showAnswers={showAnswers}
         />
       )}
     </div>
