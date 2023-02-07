@@ -5,7 +5,7 @@ const Questionnaire = ({
   handleAnswer,
   data: { question, correct_answer, incorrect_answers },
 }) => {
-  const shuffledAnswers = [correct_answer, ...incorrect_answers];
+  const shuffledAnswers = shuffleAnswers(correct_answer, incorrect_answers);
 
   return (
     <div>
@@ -36,5 +36,9 @@ const Questionnaire = ({
     </div>
   );
 };
+
+function shuffleAnswers(correct_answer, incorrect_answers) {
+  return [correct_answer, ...incorrect_answers].sort(() => Math.random() - 0.5);
+}
 
 export default Questionnaire;
