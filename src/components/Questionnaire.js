@@ -18,13 +18,11 @@ const Questionnaire = ({
         {shuffledAnswers.map((answer) => {
           return (
             <button
-              className={`${
-                correct_answer === answer ? "bg-purple-300" : "bg-white"
-              } p-4 text-purple-800 font-semibold rounded shadow`}
+              className={`bg-white
+              p-4 text-purple-800 font-semibold rounded shadow`}
               onClick={() => handleAnswer(answer)}
-            >
-              {answer}
-            </button>
+              dangerouslySetInnerHTML={{ __html: answer }}
+            />
           );
         })}
       </div>
