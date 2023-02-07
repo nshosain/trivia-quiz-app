@@ -1,5 +1,4 @@
 import React from "react";
-import Button from "./Button";
 
 const Questionnaire = ({
   handleAnswer,
@@ -16,22 +15,18 @@ const Questionnaire = ({
         />
       </div>
       <div className="grid grid-cols-2 gap-6 mt-6">
-        <Button
-          onClick={() => handleAnswer(shuffledAnswers[0])}
-          answer={shuffledAnswers[0]}
-        />
-        <Button
-          onClick={() => handleAnswer(shuffledAnswers[1])}
-          answer={shuffledAnswers[1]}
-        />
-        <Button
-          onClick={() => handleAnswer(shuffledAnswers[2])}
-          answer={shuffledAnswers[2]}
-        />
-        <Button
-          onClick={() => handleAnswer(shuffledAnswers[3])}
-          answer={shuffledAnswers[3]}
-        />
+        {shuffledAnswers.map((answer) => {
+          return (
+            <button
+              className={`${
+                correct_answer === answer ? "bg-purple-300" : "bg-white"
+              } p-4 text-purple-800 font-semibold rounded shadow`}
+              onClick={() => handleAnswer(answer)}
+            >
+              {answer}
+            </button>
+          );
+        })}
       </div>
     </div>
   );

@@ -8,22 +8,26 @@ const API_URL =
 
 function App() {
   const [questions, setQuestions] = useState([]);
+  const [currentQuestion, setCurrentQuestion] = useState(undefined);
 
   useEffect(() => {
     fetch(API_URL)
       .then((res) => res.json())
       .then((data) => {
         setQuestions(data.results);
+        setCurrentQuestion(data.results[0]);
       });
   }, []);
 
   const handleAnswer = () => {
     // check for the answer
+    // show another question
+    // change score if correct
   };
 
   return questions.length > 0 ? (
     <div className="container">
-      <Questionnaire data={questions[0]} handleAnswer={handleAnswer} />
+      <Questionnaire data={currentQuestion} handleAnswer={handleAnswer} />
     </div>
   ) : (
     <h2 className="text-2xl text-white font-bold">Loading...</h2>
