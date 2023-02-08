@@ -1,11 +1,25 @@
 import React from "react";
 
+import { toast } from "react-toastify";
+
 const Questionnaire = ({
   handleAnswer,
   handleNextQuestion,
   showAnswers,
   data: { question, correct_answer, answers },
 }) => {
+  const notifyToPickAnswer = () =>
+    toast("Pick an answer! 😛", {
+      position: "top-center",
+      autoClose: 3000,
+      hideProgressBar: true,
+      closeOnClick: true,
+      pauseOnHover: false,
+      draggable: false,
+      progress: undefined,
+      theme: "light",
+    });
+
   return (
     <div className="flex flex-col">
       <div className="bg-white text-purple-800 p-10 rounded shadow-md">
@@ -31,15 +45,15 @@ const Questionnaire = ({
           );
         })}
       </div>
-      {showAnswers && (
-        <button
-          onClick={handleNextQuestion}
-          className="ml-auto bg-purple-700 text-white
-              p-4 font-semibold rounded shadow mt-6"
-        >
-          Next Question
-        </button>
-      )}
+      <button
+        onClick={showAnswers ? handleNextQuestion : notifyToPickAnswer}
+        className={`ml-auto ${
+          showAnswers ? "bg-purple-700" : "bg-stone-700"
+        } text-white
+              p-4 font-semibold rounded shadow mt-6`}
+      >
+        Next Question
+      </button>
     </div>
   );
 };

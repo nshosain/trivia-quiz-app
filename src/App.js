@@ -1,10 +1,13 @@
 import { useState, useEffect } from "react";
-import "./App.css";
 
-import { Questionnaire } from "./components";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+
+import "./App.css";
+import { Questionnaire, GameEnd } from "./components";
 
 const API_URL =
-  "https://opentdb.com/api.php?amount=10&category=14&difficulty=easy&type=multiple";
+  "https://opentdb.com/api.php?amount=10&category=23&difficulty=easy&type=multiple";
 
 function App() {
   const [questions, setQuestions] = useState([]);
@@ -45,12 +48,9 @@ function App() {
 
   return questions.length > 0 ? (
     <div className="container">
+      <ToastContainer />
       {currentIndex >= questions.length ? (
-        <div className="text-center">
-          <h1 className="text-2xl text-white font-bold">-- Game Ended --</h1>
-          <h1 className="text-3xl text-white font-bold">Your score</h1>
-          <h1 className="text-7xl text-white font-bold">{score}</h1>
-        </div>
+        <GameEnd score={score} />
       ) : (
         <Questionnaire
           data={questions[currentIndex]}
