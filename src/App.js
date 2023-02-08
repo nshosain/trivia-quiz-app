@@ -16,7 +16,14 @@ function App() {
     fetch(API_URL)
       .then((res) => res.json())
       .then((data) => {
-        setQuestions(data.results);
+        const questions = data.results.map((question) => ({
+          ...question,
+          answers: [
+            question.correct_answer,
+            ...question.incorrect_answers,
+          ].sort(() => Math.random() - 0.5),
+        }));
+        setQuestions(questions);
       });
   }, []);
 
@@ -29,9 +36,11 @@ function App() {
     }
 
     setShowAnswers(true);
+  };
 
-    //const newIndex = currentIndex + 1;
-    // setCurrentIndex(newIndex);
+  const handleNextQuestion = () => {
+    setShowAnswers(false);
+    setCurrentIndex(currentIndex + 1);
   };
 
   return questions.length > 0 ? (
@@ -47,6 +56,7 @@ function App() {
           data={questions[currentIndex]}
           handleAnswer={handleAnswer}
           showAnswers={showAnswers}
+          handleNextQuestion={handleNextQuestion}
         />
       )}
     </div>

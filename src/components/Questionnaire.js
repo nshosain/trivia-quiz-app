@@ -2,11 +2,10 @@ import React from "react";
 
 const Questionnaire = ({
   handleAnswer,
+  handleNextQuestion,
   showAnswers,
-  data: { question, correct_answer, incorrect_answers },
+  data: { question, correct_answer, answers },
 }) => {
-  const shuffledAnswers = shuffleAnswers(correct_answer, incorrect_answers);
-
   return (
     <div className="flex flex-col">
       <div className="bg-white text-purple-800 p-10 rounded shadow-md">
@@ -16,12 +15,12 @@ const Questionnaire = ({
         />
       </div>
       <div className="grid grid-cols-2 gap-6 mt-6">
-        {shuffledAnswers.map((answer) => {
+        {answers.map((answer) => {
           const textColor = showAnswers
             ? answer === correct_answer
               ? "text-green-500"
               : "text-red-500"
-            : "text-purple-500";
+            : "text-purple-700";
           return (
             <button
               className={`bg-white ${textColor}
@@ -34,6 +33,7 @@ const Questionnaire = ({
       </div>
       {showAnswers && (
         <button
+          onClick={handleNextQuestion}
           className="ml-auto bg-purple-700 text-white
               p-4 font-semibold rounded shadow mt-6"
         >
@@ -43,9 +43,5 @@ const Questionnaire = ({
     </div>
   );
 };
-
-function shuffleAnswers(correct_answer, incorrect_answers) {
-  return [correct_answer, ...incorrect_answers].sort(() => Math.random() - 0.5);
-}
 
 export default Questionnaire;
