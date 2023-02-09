@@ -1,6 +1,8 @@
 {
-  "name": "trivia-quiz-app",
+  "name": "trivia-quiz-app-client",
   "version": "0.1.0",
+  "description": "Frontend for trivia quiz app",
+  "author": "Md Nazmul Hosain <nshosain@gmail.com>",
   "private": true,
   "dependencies": {
     "@testing-library/jest-dom": "^5.16.5",
@@ -9,6 +11,7 @@
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-icons": "^4.7.1",
+    "react-router-dom": "^6.8.1",
     "react-scripts": "5.0.1",
     "react-toastify": "^9.1.1",
     "web-vitals": "^2.1.4"
