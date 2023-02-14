@@ -1,20 +1,24 @@
 import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 import { ToastContainer } from "react-toastify";
 
 import { Questionnaire, GameEnd } from "../components";
 
-const API_URL =
-  "https://opentdb.com/api.php?amount=10&category=23&difficulty=easy&type=multiple";
+const Quiz = ({ player, category }) => {
+  const navigate = useNavigate();
 
-const Quiz = () => {
+  if (!player || !category) navigate("/", { replace: true });
+
+  const QUIZ_API_URL = `https://opentdb.com/api.php?amount=10&difficulty=easy&type=multiple&category=${category}`;
+
   const [questions, setQuestions] = useState([]);
   const [currentIndex, setCurrentIndex] = useState(0);
   const [score, setScore] = useState(0);
   const [showAnswers, setShowAnswers] = useState(false);
 
   useEffect(() => {
-    fetch(API_URL)
+    fetch(QUIZ_API_URL)
       .then((res) => res.json())
       .then((data) => {
         const questions = data.results.map((question) => ({
@@ -47,7 +51,7 @@ const Quiz = () => {
     <div className="container">
       <ToastContainer />
       {currentIndex >= questions.length ? (
-        <GameEnd score={score} />
+        <GameEnd player={player} score={score} />
       ) : (
         <Questionnaire
           data={questions[currentIndex]}

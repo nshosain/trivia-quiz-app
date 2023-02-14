@@ -1,9 +1,17 @@
 import React, { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
+
 import { toast } from "react-toastify";
 import { FaLinkedin } from "react-icons/fa";
 import { AiOutlineGithub } from "react-icons/ai";
 
-const GameEnd = ({ score }) => {
+const GameEnd = ({ player, score }) => {
+  const navigate = useNavigate();
+
+  const backToHome = () => {
+    navigate("/", { replace: true });
+  };
+
   useEffect(() => {
     toast("Game Ended! 😎", {
       position: "top-center",
@@ -19,9 +27,12 @@ const GameEnd = ({ score }) => {
 
   return (
     <div className="container text-center">
-      <h1 className="text-3xl text-white font-bold">Your score</h1>
+      <h1 className="text-3xl text-white font-bold">{`${player}'s Score`}</h1>
       <h1 className="text-9xl text-white font-bold">{score}</h1>
-      <button className="bg-purple-700 text-white p-4 font-semibold rounded shadow mt-6">
+      <button
+        className="bg-purple-700 text-white p-4 font-semibold rounded shadow mt-6"
+        onClick={backToHome}
+      >
         Play Again?
       </button>
       <div className="flex place-content-center mt-6">
