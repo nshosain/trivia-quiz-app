@@ -1,8 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { formatDate, SERVER_URL } from "../utils/helper";
 
-import { toast } from "react-toastify";
-
 const LatestHighScores = () => {
   const [latestScores, setLatestScores] = useState([]);
 
