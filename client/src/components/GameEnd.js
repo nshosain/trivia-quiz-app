@@ -1,11 +1,28 @@
 import React, { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
+import { categoriesEnum, SERVER_URL } from "../utils/helper";
+
 import { toast } from "react-toastify";
 import { FaLinkedin } from "react-icons/fa";
 import { AiOutlineGithub } from "react-icons/ai";
 
-const GameEnd = ({ player, score }) => {
+const saveScore = (player, score, category) => {
+  const requestOptions = {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({
+      player: player,
+      score: score,
+      category: categoriesEnum[category],
+    }),
+  };
+  fetch(`${SERVER_URL}/api/v1/scores`, requestOptions)
+    .then((response) => response.json())
+    .then((data) => console.log(data));
+};
+
+const GameEnd = ({ player, score, category }) => {
   const navigate = useNavigate();
 
   const backToHome = () => {
@@ -13,6 +30,7 @@ const GameEnd = ({ player, score }) => {
   };
 
   useEffect(() => {
+    saveScore(player, score, category);
     toast("Game Ended! 😎", {
       position: "top-center",
       autoClose: 5000,
@@ -23,7 +41,7 @@ const GameEnd = ({ player, score }) => {
       progress: undefined,
       theme: "light",
     });
-  }, []);
+  }, [player, score, category]);
 
   return (
     <div className="container text-center">

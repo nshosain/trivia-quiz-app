@@ -30,7 +30,7 @@ const Quiz = ({ player, category }) => {
         }));
         setQuestions(questions);
       });
-  }, []);
+  }, [QUIZ_API_URL]);
 
   const handleAnswer = (answer) => {
     if (!showAnswers) {
@@ -51,7 +51,7 @@ const Quiz = ({ player, category }) => {
     <div className="container">
       <ToastContainer />
       {currentIndex >= questions.length ? (
-        <GameEnd player={player} score={score} />
+        <GameEnd player={player} score={score} category={category} />
       ) : (
         <Questionnaire
           data={questions[currentIndex]}

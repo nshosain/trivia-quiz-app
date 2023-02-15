@@ -1,31 +1,10 @@
+import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 
 import { ToastContainer } from "react-toastify";
 
-import { FaLinkedin } from "react-icons/fa";
-import { AiOutlineGithub } from "react-icons/ai";
-
-const data = [
-  {
-    player: "shakil",
-    score: 10,
-    category: "Movies",
-    date: "2023-12-01",
-  },
-  {
-    player: "shakil",
-    score: 10,
-    category: "Movies",
-    date: "2023-12-01",
-  },
-  {
-    player: "shakil",
-    score: 10,
-    category: "Movies",
-    date: "2023-12-01",
-  },
-];
+import { Footer, LatestHighScores } from "../components";
 
 const Home = ({ player, category, setCategory, setPlayer }) => {
   const navigate = useNavigate();
@@ -125,48 +104,11 @@ const Home = ({ player, category, setCategory, setPlayer }) => {
           </form>
         </div>
         <div className="flex flex-col bg-white text-purple-800 p-10 rounded shadow-md">
-          <h1 className="text-2xl text-center">Latest High Scores</h1>
-          <table className="border-collapse border border-slate-500 mt-6">
-            <tr>
-              <th className="border border-slate-600">Player</th>
-              <th className="border border-slate-600">Score</th>
-              <th className="border border-slate-600">Category</th>
-              <th className="border border-slate-600">Date</th>
-            </tr>
-            {data.map((val, key) => {
-              return (
-                <tr key={key}>
-                  <td className="border border-slate-700">{val.player}</td>
-                  <td className="border border-slate-700">{val.score}</td>
-                  <td className="border border-slate-700">{val.category}</td>
-                  <td className="border border-slate-700">{val.date}</td>
-                </tr>
-              );
-            })}
-          </table>
+          <LatestHighScores />
         </div>
       </div>
       <div className="flex flex-col bg-white text-purple-800 p-2 rounded shadow-md mt-6">
-        <div className="flex items-center justify-center">
-          <div className="p-1">
-            <a
-              href="https://github.com/nshosain"
-              target="_blank"
-              rel="noreferrer"
-            >
-              <AiOutlineGithub style={{ color: "#6b21a8", fontSize: "30px" }} />
-            </a>
-          </div>
-          <div className="p-1">
-            <a
-              href="https://www.linkedin.com/in/nshosain/"
-              target="_blank"
-              rel="noreferrer"
-            >
-              <FaLinkedin style={{ color: "#6b21a8", fontSize: "30px" }} />
-            </a>
-          </div>
-        </div>
+        <Footer />
       </div>
       <ToastContainer />
     </div>
