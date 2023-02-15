@@ -15,16 +15,6 @@ const LatestHighScores = () => {
     }
   };
   useEffect(() => {
-    toast(`SERVER URL: ${SERVER_URL}`, {
-      position: "top-center",
-      autoClose: 3000,
-      hideProgressBar: true,
-      closeOnClick: true,
-      pauseOnHover: false,
-      draggable: false,
-      progress: undefined,
-      theme: "light",
-    });
     fetchData()
       .then((data) => {
         setLatestScores(data.scores);
