@@ -1,0 +1,9 @@
+# dependencies
+/node_modules
+
+# configs
+/config
+.env
+
+# builds
+/dist
