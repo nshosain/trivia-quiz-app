@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { formatDate, SERVER_URL } from "../utils/helper";
 
+import { toast } from "react-toastify";
+
 const LatestHighScores = () => {
   const [latestScores, setLatestScores] = useState([]);
 
@@ -13,6 +15,16 @@ const LatestHighScores = () => {
     }
   };
   useEffect(() => {
+    toast(`SERVER URL: ${SERVER_URL}`, {
+      position: "top-center",
+      autoClose: 3000,
+      hideProgressBar: true,
+      closeOnClick: true,
+      pauseOnHover: false,
+      draggable: false,
+      progress: undefined,
+      theme: "light",
+    });
     fetchData()
       .then((data) => {
         setLatestScores(data.scores);
