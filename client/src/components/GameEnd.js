@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 
 import { toast } from "react-toastify";
 
-import { categoriesEnum, SERVER_URL } from "../utils/helper";
+import { categoriesEnum } from "../utils/helper";
 
 import { Footer } from "../components";
 
@@ -17,7 +17,7 @@ const saveScore = (player, score, category) => {
       category: categoriesEnum[category],
     }),
   };
-  fetch(`${SERVER_URL}/api/v1/scores`, requestOptions)
+  fetch(`${process.env.REACT_APP_API_SERVER}/api/v1/scores`, requestOptions)
     .then((response) => response.json())
     .then((data) => console.log(data));
 };

@@ -1,13 +1,13 @@
 import React, { useState, useEffect } from "react";
-import { formatDate, SERVER_URL } from "../utils/helper";
-
-import { toast } from "react-toastify";
+import { formatDate } from "../utils/helper";
 
 const LatestHighScores = () => {
   const [latestScores, setLatestScores] = useState([]);
 
   const fetchData = async () => {
-    const response = await fetch(`${SERVER_URL}/api/v1/scores`);
+    const response = await fetch(
+      `${process.env.REACT_APP_API_SERVER}/api/v1/scores`
+    );
     if (!response.ok) {
       throw new Error("Data could not be fetched!");
     } else {
