@@ -10,7 +10,7 @@
   <img src="https://img.shields.io/badge/-tailwindcss-313131?style=flat-square&logo=tailwindcss&logoColor=#F7F7F7" />
  </p>
  
- <h5 align="center">🟢 Live on <a href="https://trivia-quiz-app-psi.vercel.app/" target="_blank" rel="noreferrer">Vercel</a></h5>
+ <h5 align="center">🟢 Live on <a href="https://trivia-quiz-app-nine.vercel.app/" target="_blank" rel="noreferrer">Vercel</a></h5>
  
 ----
 <h3 align="center">Features</h3>
