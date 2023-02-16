@@ -5,6 +5,7 @@
   <img src="https://img.shields.io/badge/-TypeScript-2F74C0?style=flat-square&logo=typescript&logoColor=white" />
   <img src="https://img.shields.io/badge/-node.js-313131?style=flat-square&logo=node.js&logoColor=#F7F7F7" />
   <img src="https://img.shields.io/badge/-Express-000000?style=flat-square&logo=express&logoColor=white" />
+  <img src="https://img.shields.io/badge/-docker-blue?style=flat-square&logo=docker&logoColor=white" />
   <img src="https://img.shields.io/badge/-React-212121?style=flat-square&logo=react&logoColor=2F74C0" />
   <img src="https://img.shields.io/badge/-MongoDB-47A248?style=flat-square&logo=mongodb&logoColor=white" />
   <img src="https://img.shields.io/badge/-tailwindcss-313131?style=flat-square&logo=tailwindcss&logoColor=#F7F7F7" />
