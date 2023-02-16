@@ -35,18 +35,24 @@ const LatestHighScores = () => {
             <th className="border border-slate-600 p-1">Category</th>
             <th className="border border-slate-600 p-1">Date</th>
           </tr>
-          {latestScores.map((val, key) => {
-            return (
-              <tr key={key}>
-                <td className="border border-slate-700 p-1">{val.player}</td>
-                <td className="border border-slate-700 p-1">{val.score}</td>
-                <td className="border border-slate-700 p-1">{val.category}</td>
-                <td className="border border-slate-700 p-1">
-                  {formatDate(val.createdAt)}
-                </td>
-              </tr>
-            );
-          })}
+          {latestScores.length ? (
+            latestScores.map((val, key) => {
+              return (
+                <tr key={key}>
+                  <td className="border border-slate-700 p-1">{val.player}</td>
+                  <td className="border border-slate-700 p-1">{val.score}</td>
+                  <td className="border border-slate-700 p-1">
+                    {val.category}
+                  </td>
+                  <td className="border border-slate-700 p-1">
+                    {formatDate(val.createdAt)}
+                  </td>
+                </tr>
+              );
+            })
+          ) : (
+            <h1>Loading...</h1>
+          )}
         </table>
       )}
     </div>
