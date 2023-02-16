@@ -2,7 +2,7 @@
   "name": "trivia-quiz-app-server",
   "version": "1.0.0",
   "description": "Backend for a trivia quiz app",
-  "main": "index.ts",
+  "main": "index.js",
   "scripts": {
     "build": "tsc",
     "start": "node ./dist/index.js",
