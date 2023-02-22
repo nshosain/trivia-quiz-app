@@ -1,6 +1,6 @@
 version: "3.9"
 services:
-  api:
+  server:
     build:
       context: ./server
       dockerfile: Dockerfile
@@ -12,11 +12,20 @@ services:
     # such as - install nodemon, to watch for file changes
     # volumes:
     #   - ./server:/usr/src/app/
-    working_dir: /usr/src/app
     environment:
-      - PORT=
-      - MONGO_USER=
-      - MONGO_PASSWORD=
-      - MONGO_CLUSTER=
-      - MONGO_DB_NAME=
-      - ORIGIN=
+      - PORT=4000
+      - MONGO_USER={USER}
+      - MONGO_PASSWORD={PASSWORD}
+      - MONGO_CLUSTER={CLUSTER}
+      - MONGO_DB_NAME={DB NAME}
+      - ORIGIN=*
+  client:
+    build:
+      context: ./client
+      dockerfile: Dockerfile
+    container_name: "trivia-quiz-app-client-c"
+    ports:
+      - "3000:3000"
+    stdin_open: true
+    environment:
+      - REACT_APP_API_SERVER= http://localhost:4000

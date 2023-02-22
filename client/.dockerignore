@@ -1,0 +1,5 @@
+node_modules
+build
+.env-cmdrc
+.env-cmdrc.example
+.gitignore
