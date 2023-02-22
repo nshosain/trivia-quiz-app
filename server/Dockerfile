@@ -2,14 +2,9 @@
 # with version 17 and Linux Distro alpine
 FROM node:17-alpine
 
-# Globally install nodemon
-# Nodemon re-starts the server when there are changes in the code
-# Installing nodemon globally so that Docker Volumes can be utilized
-RUN npm install -g nodemon
-
 # Specify working directory in the image
 # Now, all commands will run in the WORKDIR directory
-WORKDIR /app
+WORKDIR /usr/src/app
 
 # Copy only package.json file to the image
 # This is done to check if we already built an image with the same package.json file
@@ -36,10 +31,5 @@ RUN npm run build
 EXPOSE 4000
 
 # CMD commands run at runtime when the container runs
-# Builds and Runs the node express app
-# CMD ["npm", "run", "start"]
-
-# There can only be 1 CMD command in a Dockerfile
-# This is a script in the package.json to run the project
-# Using nodemon, why we do this is mentioned above
-CMD ["npm", "run", "docker-start"]
+# Runs the node express app from dist
+CMD ["npm", "run", "start"]
